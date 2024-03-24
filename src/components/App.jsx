@@ -57,11 +57,11 @@ class App extends Component {
     const normalizedCurrentQuery = this.state.searchQuery.toLowerCase();
 
     if (normalizedQuery === '') {
-      alert(`Empty string is not a valid search query. Please type again.`);
+      Notiflix.Notify.warning(`Empty string is not a valid search query. Please type again.`);
       return;
     }
     if (normalizedQuery === normalizedCurrentQuery) {
-      alert(
+      Notiflix.Notify.warning(
         `Search query is the same as the previous one. Please provide a new search query.`
       );
 
