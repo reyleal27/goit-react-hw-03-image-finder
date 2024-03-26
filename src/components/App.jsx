@@ -45,7 +45,7 @@ class App extends Component {
       if (hits.length === 0) {
         Notiflix.Notify.warning('No images found. Try a different search.');
         return;
-      } 
+      }
     } catch (error) {
       this.setState({ isLoading: false, isError: true });
       Notiflix.Notify.failure(`An error occured while fetching data: ${error}`);
@@ -57,7 +57,9 @@ class App extends Component {
     const normalizedCurrentQuery = this.state.searchQuery.toLowerCase();
 
     if (normalizedQuery === '') {
-      Notiflix.Notify.failure(`Empty string is not a valid search query. Please type again.`);
+      Notiflix.Notify.failure(
+        `Empty string is not a valid search query. Please type again.`
+      );
       return;
     }
     if (normalizedQuery === normalizedCurrentQuery) {
@@ -67,7 +69,6 @@ class App extends Component {
 
       return;
     }
-    
 
     if (normalizedQuery !== normalizedCurrentQuery) {
       this.setState({
@@ -78,7 +79,6 @@ class App extends Component {
       });
     }
 
-
     console.log(`normalizedCurrent: ${normalizedCurrentQuery}`);
     console.log(normalizedQuery);
     console.log(this.state.images);
@@ -88,7 +88,7 @@ class App extends Component {
     if (!this.state.isEnd) {
       this.setState(prevState => ({ currentPage: prevState.currentPage + 1 }));
     } else {
-      Notiflix.Notify.info('You have reached the end of the search results');
+      Notiflix.Notify.warning('You have reached the end of the search results');
     }
   };
 
